@@ -1,0 +1,7 @@
+<div class="recipe-show-page">
+  <h2><%= @recipe.name %></h2>
+  <p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
+  <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
+  <p>Description: <%= @recipe.description %></p>
+</div>
+<%= link_to 'Back to Recipes', recipes_path %>

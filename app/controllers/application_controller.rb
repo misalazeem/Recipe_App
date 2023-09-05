@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
       user.permit(:name, :email, :password, :password_confirmation)
     end
   end
+
+  def after_sign_out_path_for(_resource_or_scope)
+    new_user_session_path
+  end
 end

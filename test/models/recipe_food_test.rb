@@ -1,10 +1,6 @@
-
-require "test_helper"
-=======
 require 'test_helper'
 
-
-class FoodTest < ActiveSupport::TestCase
+class RecipeFoodTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
