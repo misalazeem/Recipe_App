@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  margin: 0;
+  padding: 3% 10%;
+  font-family: Poppins, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 19px;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #000;
+  margin-left: 25px;
+}
+
+.navigation a:hover {
+  text-decoration: underline;
+}
