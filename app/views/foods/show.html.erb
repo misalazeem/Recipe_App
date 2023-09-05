@@ -1,0 +1,22 @@
+
+<h1>Food Details</h1>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Name:</th>
+      <td><%= @food.name %></td>
+    </tr>
+    <tr>
+      <th>Measurement Unit:</th>
+      <td><%= @food.measurement_unit %></td>
+    </tr>
+
+    <tr>
+      <th>Unit Price:</th>
+      <td><%= @food.price %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Back to Food List', foods_path, class: 'btn btn-primary' %>
