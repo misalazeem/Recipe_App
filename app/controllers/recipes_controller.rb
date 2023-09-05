@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    puts "Destroy action executed."
+    puts 'Destroy action executed.'
     @recipe = Recipe.find(params[:id])
     if @recipe.user == current_user
       @recipe.destroy
