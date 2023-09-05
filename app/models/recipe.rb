@@ -5,6 +5,4 @@ class Recipe < ApplicationRecord
 
 
   attribute :public, :boolean, default: false
-
-
-end  
+end
