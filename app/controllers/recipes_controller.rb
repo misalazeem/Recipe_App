@@ -7,10 +7,10 @@ class RecipesController < ApplicationController
 
   def add_ingredient
     @recipe = Recipe.find(params[:id])
-  
+
     if current_user == @recipe.user
       @foods_not_in_recipe = Food.where.not(id: @recipe.foods.pluck(:id))
-  
+
       if params[:recipe].present? && params[:recipe][:food_ids].present?
         food_ids = params[:recipe][:food_ids].reject(&:empty?) # Remove empty strings
         @recipe.foods << Food.where(id: food_ids)
@@ -21,10 +21,9 @@ class RecipesController < ApplicationController
     else
       flash[:alert] = 'You do not have permission to add ingredients to this recipe.'
     end
-  
+
     render 'add_ingredient'
   end
-  
 
   def remove_food
     @recipe = Recipe.find(params[:id])
@@ -59,23 +58,23 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @toggle_recipe_public = params[:toggle_recipe_public]
-    if @toggle_recipe_public && @recipe.user == current_user
-      @recipe.update(public: !@recipe.public)
-      flash[:notice] = @recipe.public ? 'Recipe is now public.' : 'Recipe is now private.'
-      redirect_to recipe_path(@recipe)
-    end
+    return unless @toggle_recipe_public && @recipe.user == current_user
+
+    @recipe.update(public: !@recipe.public)
+    flash[:notice] = @recipe.public ? 'Recipe is now public.' : 'Recipe is now private.'
+    redirect_to recipe_path(@recipe)
   end
 
   def toggle_recipe_public
     @recipe = Recipe.find(params[:id])
-    
+
     if @recipe.user == current_user
       @recipe.update(public: !@recipe.public)
       flash[:notice] = @recipe.public ? 'Recipe is now public.' : 'Recipe is now private.'
     else
       flash[:alert] = 'You do not have permission to toggle this recipe.'
     end
-  
+
     redirect_to @recipe
   end
 end
