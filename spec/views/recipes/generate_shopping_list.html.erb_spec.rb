@@ -1,7 +1,7 @@
 require 'rails_helper'
-include Warden::Test::Helpers
 
 RSpec.describe 'recipes/generate_shopping_list.html.erb', type: :view do
+  include Warden::Test::Helpers
   before do
     @user = User.create(
       email: 'user@example.com',

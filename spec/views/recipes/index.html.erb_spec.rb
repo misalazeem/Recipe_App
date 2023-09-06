@@ -1,7 +1,8 @@
 require 'rails_helper'
-include Warden::Test::Helpers
 
+# rubocop:disable Metrics/BlockLength
 RSpec.feature 'Recipes Index', type: :feature do
+  include Warden::Test::Helpers
   before do
     user = User.create(email: 'user@example.com', password: 'password', name: 'user123')
     login_as user, scope: :user
@@ -47,3 +48,4 @@ RSpec.feature 'Recipes Index', type: :feature do
     Warden.test_reset!
   end
 end
+# rubocop:enable Metrics/BlockLength
