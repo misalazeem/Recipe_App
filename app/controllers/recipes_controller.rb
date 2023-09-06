@@ -5,6 +5,12 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes
   end
 
+  def public_recipes
+    @public_recipes = Recipe.where(public: true).includes(:foods)
+    @total_food_items = Food.sum(:quantity)
+    @total_price = Food.joins(:recipe_foods).sum('foods.quantity * foods.price')
+  end
+
   def destroy
     puts 'Destroy action executed.'
     @recipe = Recipe.find(params[:id])

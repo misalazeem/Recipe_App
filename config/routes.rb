@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     member do
       delete :destroy
     end
+
+    collection do
+      get 'public_recipes', to: 'recipes#public_recipes'
+    end
   end
+
 
 end
