@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe RecipesController, type: :controller do
   let(:user) { User.create(name: 'Test User', email: 'user@example.com', password: 'password') }
-  let(:recipe) { Recipe.create(name: 'Test Recipe', user: user) }
+  let(:recipe) { Recipe.create(name: 'Test Recipe', user:) }
 
   before { sign_in user }
 
@@ -30,16 +30,16 @@ RSpec.describe RecipesController, type: :controller do
     end
   end
 
-describe 'POST #create' do
-  let(:valid_params) { { recipe: { name: 'New Recipe', user_id: user.id } } }
+  describe 'POST #create' do
+    let(:valid_params) { { recipe: { name: 'New Recipe', user_id: user.id } } }
 
-  it 'creates a new recipe with valid parameters' do
-    expect {
-      post :create, params: valid_params
-    }.to change(Recipe, :count).by(1)
-    expect(response).to redirect_to(recipe_path(Recipe.last))
+    it 'creates a new recipe with valid parameters' do
+      expect do
+        post :create, params: valid_params
+      end.to change(Recipe, :count).by(1)
+      expect(response).to redirect_to(recipe_path(Recipe.last))
+    end
   end
-end
 
   describe 'GET #show' do
     it 'returns a successful response' do
@@ -66,13 +66,13 @@ end
   end
 
   describe 'DELETE #remove_food' do
-    let(:food) { Food.create(name: 'Test Food', user: user, price: 5.0, quantity: 2.0) }
+    let(:food) { Food.create(name: 'Test Food', user:, price: 5.0, quantity: 2.0) }
 
     it 'removes food from the recipe' do
       recipe.foods << food
-      expect {
+      expect do
         delete :remove_food, params: { id: recipe.id, food_id: food.id }
-      }.to change(recipe.foods, :count).by(-1)
+      end.to change(recipe.foods, :count).by(-1)
     end
   end
 
@@ -83,7 +83,7 @@ end
     end
 
     it 'assigns public recipes to @public_recipes' do
-      public_recipe = Recipe.create(name: 'Public Recipe', user: user, public: true)
+      public_recipe = Recipe.create(name: 'Public Recipe', user:, public: true)
       get :public_recipes
       expect(assigns(:public_recipes)).to eq([public_recipe])
     end
@@ -92,17 +92,17 @@ end
   describe 'DELETE #destroy' do
     it 'deletes the recipe' do
       recipe
-      expect {
+      expect do
         delete :destroy, params: { id: recipe.id }
-      }.to change(Recipe, :count).by(-1)
+      end.to change(Recipe, :count).by(-1)
     end
   end
 
   describe 'PATCH #toggle_recipe_public' do
     it 'toggles the recipe\'s public status' do
-      expect {
+      expect do
         patch :toggle_recipe_public, params: { id: recipe.id }
-      }.to change { recipe.reload.public }.from(false).to(true)
+      end.to change { recipe.reload.public }.from(false).to(true)
     end
   end
 

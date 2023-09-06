@@ -38,7 +38,7 @@ RSpec.describe 'recipes/generate_shopping_list.html.erb', type: :view do
 
   it 'displays the total value of food needed' do
     render
-    expect(rendered).to have_content("Total Value of food needed: $#{'%.2f' % @total_value}")
+    expect(rendered).to have_content("Total Value of food needed: $#{format('%.2f', @total_value)}")
   end
 
   it 'displays a table of required food items' do
@@ -47,7 +47,7 @@ RSpec.describe 'recipes/generate_shopping_list.html.erb', type: :view do
       expect(rendered).to have_content(food.name)
       expect(rendered).to have_content(food.quantity)
       expect(rendered).to have_content(food.measurement_unit)
-      expect(rendered).to have_content("$#{ (food.price * food.quantity)}")
+      expect(rendered).to have_content("$#{food.price * food.quantity}")
     end
   end
 
