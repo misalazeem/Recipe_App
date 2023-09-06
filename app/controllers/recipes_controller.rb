@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @recipes = current_user.recipes
+    @recipes = current_user.recipes.includes(:foods)
   end
 
   def new
@@ -97,7 +97,7 @@ class RecipesController < ApplicationController
   def generate_shopping_list
     @recipe = Recipe.find(params[:id])
 
-    @required_foods = @recipe.foods.where.not(user: current_user)
+    @required_foods = @recipe.foods.where.not(user: current_user).includes(:user)
     @total_value = @required_foods.sum { |food| food.quantity * food.price }
   end
 
