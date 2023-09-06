@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       delete :destroy
       patch :toggle_recipe_public
       get 'add_ingredient', to: 'recipes#add_ingredient'
+      get 'generate_shopping_list', to: 'recipes#generate_shopping_list'
       post 'add_ingredient', to: 'recipes#add_ingredient'
       delete 'remove_food'
     end
@@ -24,6 +25,8 @@ Rails.application.routes.draw do
     collection do
       get 'public_recipes', to: 'recipes#public_recipes'
     end
+    post :create, on: :collection
+    
   end
 
 

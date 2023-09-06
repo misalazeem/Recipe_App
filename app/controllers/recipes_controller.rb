@@ -5,6 +5,10 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes
   end
 
+  def new
+    @recipe = Recipe.new
+  end
+
   def add_ingredient
     @recipe = Recipe.find(params[:id])
 
@@ -43,10 +47,22 @@ class RecipesController < ApplicationController
     @total_price = Food.joins(:recipe_foods).sum('foods.quantity * foods.price')
   end
 
+  def create
+    @recipe = current_user.recipes.build(recipe_params)
+    if @recipe.save
+      flash[:notice] = 'Recipe created successfully.'
+      redirect_to recipe_path(@recipe)
+    else
+      flash.now[:alert] = 'Recipe creation failed.'
+      render 'new'
+    end
+  end
+
   def destroy
-    puts 'Destroy action executed.'
     @recipe = Recipe.find(params[:id])
     if @recipe.user == current_user
+      @recipe.recipe_foods.destroy_all
+
       @recipe.destroy
       flash[:notice] = 'Recipe deleted successfully.'
     else
@@ -76,5 +92,18 @@ class RecipesController < ApplicationController
     end
 
     redirect_to @recipe
+  end
+
+  def generate_shopping_list
+    @recipe = Recipe.find(params[:id])
+
+    @required_foods = @recipe.foods.where.not(user: current_user)
+    @total_value = @required_foods.sum { |food| food.quantity * food.price }
+  end
+
+  private
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end
