@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resources :recipes do
     member do
       delete :destroy
+      patch :toggle_recipe_public
+      get 'add_ingredient', to: 'recipes#add_ingredient'
+      post 'add_ingredient', to: 'recipes#add_ingredient'
+      delete 'remove_food'
     end
 
     collection do
