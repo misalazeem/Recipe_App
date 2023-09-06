@@ -49,3 +49,9 @@
 .recipe-show-page h2 {
   text-align: center;
 }
+
+.top-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
