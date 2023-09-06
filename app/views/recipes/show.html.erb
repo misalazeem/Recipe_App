@@ -18,9 +18,12 @@
   <p>Description: <%= @recipe.description %></p>
 
   <h3>Required Food Items</h3>
-  <% if current_user == @recipe.user %>
-    <%= link_to 'Add Ingredient', add_ingredient_recipe_path(@recipe), class: 'btn btn-primary' %>
-  <% end %>
+  <div class="recipe-show-button-container">
+  <%= link_to 'Generate Shopping List', generate_shopping_list_recipe_path(@recipe), class: 'btn btn-primary' %>
+  <% if current_user == @recipe.user %>      
+      <%= link_to 'Add Ingredient', add_ingredient_recipe_path(@recipe), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 <table class="table table-bordered">
   <thead>
     <tr>

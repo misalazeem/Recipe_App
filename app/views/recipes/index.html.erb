@@ -7,7 +7,7 @@
           <%= link_to recipe.name, recipe_path(recipe) %>
           <% if recipe.user == current_user %>
               <%= form_with(model: recipe, method: :delete, local: true, data: { confirm: 'Are you sure?' }) do |form| %>
-              <%= form.submit 'Delete', class: 'delete-recipe' %>
+              <%= form.submit 'Delete', class: 'btn btn-danger btn-sm' %>
             <% end %>
           <% end %>
         </div>
