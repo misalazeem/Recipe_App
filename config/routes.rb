@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-
-  # Defines the root path route ("/")
+  # Define the root path route ("/")
   # root "articles#index"
   resources :foods, only: [:index, :show, :new, :create, :destroy]
 
@@ -17,17 +16,13 @@ Rails.application.routes.draw do
       delete :destroy
       patch :toggle_recipe_public
       get 'add_ingredient', to: 'recipes#add_ingredient'
-      get 'generate_shopping_list', to: 'recipes#generate_shopping_list'
       post 'add_ingredient', to: 'recipes#add_ingredient'
+      get 'generate_shopping_list', to: 'recipes#generate_shopping_list'
       delete 'remove_food'
     end
 
     collection do
       get 'public_recipes', to: 'recipes#public_recipes'
     end
-    post :create, on: :collection
-    
   end
-
-
 end

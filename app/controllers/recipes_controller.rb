@@ -54,7 +54,7 @@ class RecipesController < ApplicationController
       redirect_to recipe_path(@recipe)
     else
       flash.now[:alert] = 'Recipe creation failed.'
-      render 'new'
+      redirect_to new_recipe_url
     end
   end
 
