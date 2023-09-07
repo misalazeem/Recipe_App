@@ -1,8 +1,10 @@
 <br>
+<h2> Food List </h2>
 <%= link_to 'Add New Food', new_food_path, class: 'btn btn-primary' %>
-
-<table class="table table-stripped table-borderer table-hover">
-  <thead>
+<br/>
+<br>
+<table class="table table-stripped table-bordered table-hover table-success">
+  <thead class="table-light"> 
     <tr>
       <th>Name</th>
       <th>Measurement Unit</th>
@@ -11,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @foods.each do |food| %>
+    <% @foods.includes(:user).each do |food| %>
       <tr>
         <td><%= food.name %></td>
         <td><%= food.measurement_unit %></td>
@@ -19,7 +21,7 @@
         <td>
           <% if food.user == current_user %>
             <%= form_with(model: food, method: :delete, local: true, data: { confirm: 'Are you sure?' }) do |form| %>
-              <%= form.submit 'Remove', class: 'btn btn-danger' %>
+              <%= form.submit 'Remove Food', class: 'btn btn-danger' %>
             <% end %>
           <% end %>
         </td>
