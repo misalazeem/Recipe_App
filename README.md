@@ -9,7 +9,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Blog-App-Rails ](#-blog-app-rails-)
+- [📖 Recipe-App-Rails ](#-blog-app-rails-)
   - [🛠 Built With ](#-built-with-)
     - [Key Features ](#key-features-)
   - [💻 Getting Started ](#-getting-started-)
