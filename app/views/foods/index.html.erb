@@ -1,0 +1,31 @@
+<br>
+<h2> Food List </h2>
+<%= link_to 'Add New Food', new_food_path, class: 'btn btn-primary' %>
+<br/>
+<br>
+<table class="table table-stripped table-bordered table-hover table-success">
+  <thead class="table-light"> 
+    <tr>
+      <th>Name</th>
+      <th>Measurement Unit</th>
+      <th>Unit Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.includes(:user).each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.measurement_unit %></td>
+        <td><%= food.price %></td>
+        <td>
+          <% if food.user == current_user %>
+            <%= form_with(model: food, method: :delete, local: true, data: { confirm: 'Are you sure?' }) do |form| %>
+              <%= form.submit 'Remove Food', class: 'btn btn-danger' %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
