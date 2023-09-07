@@ -49,3 +49,17 @@
 .recipe-show-page h2 {
   text-align: center;
 }
+
+.top-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.recipe-show-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
