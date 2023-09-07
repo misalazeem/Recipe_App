@@ -2,11 +2,10 @@ require 'rails_helper'
 
 RSpec.feature 'Public Recipes', type: :feature do
   scenario 'User views public recipes' do
-
     user = User.create(name: 'John', email: 'john@example.com', password: 'password')
 
-    recipe1 = Recipe.create(name: 'Sample Recipe 1', user: user)
-    recipe2 = Recipe.create(name: 'Sample Recipe 2', user: user)
+    Recipe.create(name: 'Sample Recipe 1', user:)
+    Recipe.create(name: 'Sample Recipe 2', user:)
 
     visit new_user_session_path
 
@@ -18,6 +17,5 @@ RSpec.feature 'Public Recipes', type: :feature do
 
     visit public_recipes_recipes_path
     expect(page).to have_content('Public Recipes')
-    
   end
 end
