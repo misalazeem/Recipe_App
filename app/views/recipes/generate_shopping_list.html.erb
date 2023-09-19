@@ -1,14 +1,16 @@
-<div class="container">
-  <h2 class="mt-4">Generate Shopping List</h2>
-  <div class="row mt-4">
-    <div class="col-md-6">
+<div class="shopping-list">
+  <h2 class="section-title">Generate Shopping List</h2>
+  <div class="shopping-list-summary">
+    <div class="summary-item">
       <p>Amount of food items to buy: <%= @required_foods.count %></p>
+    </div>
+    <div class="summary-item">
       <p>Total Value of food needed: <%= number_to_currency(@total_value) %></p>
     </div>
   </div>
 
-  <h3 class="mt-4">Required Food Items</h3>
-  <table class="table table-bordered mt-2">
+  <h3 class="section-subtitle">Required Food Items</h3>
+  <table class="shopping-list-table">
     <thead>
       <tr>
         <th>Name</th>
@@ -29,5 +31,5 @@
     </tbody>
   </table>
 
-  <%= link_to 'Back to Recipe', recipe_path(@recipe), class: 'btn btn-primary mt-4' %>
+  <%= link_to 'Back to Recipe', recipe_path(@recipe), class: 'back-button' %>
 </div>

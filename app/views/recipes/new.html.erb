@@ -1,5 +1,6 @@
+<div class="recipe-index">
 <h2>Create a New Recipe</h2>
-
+<div class="container-login">
 <%= form_with(model: @recipe, local: true) do |form| %>
   <div class="mb-3">
     <%= form.label :name, class: 'form-label' %>
@@ -30,3 +31,4 @@
 <% end %>
 
 <%= link_to 'Back to Recipes', recipes_path %>
+</div>

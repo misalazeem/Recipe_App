@@ -1,65 +1,203 @@
+/* Your Recipes Section Styles */
 .recipes-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.recipes-container ul {
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-}
-
-.recipes-container li {
-  border: 2px solid #000;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 30px;
-}
-
-.recipes-container li a {
-  text-decoration: none;
-  color: #000;
-  font-size: 18px;
-}
-
-.recipes-container li a:hover {
-  text-decoration: underline;
-}
-
-.recipe-left {
-  display: flex;
-  flex-direction: column;
-  margin-right: 30px;
-}
-
-.recipe-left input[type="submit"] {
-  background-color: red;
-  color: #fff;
-  padding: 5px;
-  margin-top: 20px;
-}
-
-.recipe-show-page {
-  display: flex;
-  flex-direction: column;
-}
-
-.recipe-show-page h2 {
-  text-align: center;
-}
-
-.top-line {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.recipe-show-button-container {
+.recipe-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-item a {
+  text-decoration: none;
+}
+
+.recipe-name {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.recipe-name:hover {
+  color: #ff5733; /* Color on hover */
+}
+
+.recipe-description {
+  font-size: 16px;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* New Recipe Button Styles */
+.btn-primary {
+  background-color: #ff5733;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #ffae63; /* Button background color on hover */
+}
+
+.recipe-index {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.recipe-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recipe-card {
+  width: calc(50% - 10px);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recipe-details {
+  flex: 1;
+  text-align: left;
+}
+
+.recipe-author {
+  font-size: 16px;
+  color: #555;
   margin-bottom: 10px;
+}
+
+.recipe-stats {
+  text-align: right;
+}
+
+.recipe-info {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.view-details-button {
+  background-color: #ff5733;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.view-details-button:hover {
+  background-color: #ffae63; /* Button background color on hover */
+}
+
+/* Shopping List Styles */
+.shopping-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 20px;
+}
+
+.shopping-list-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.summary-item {
+  flex: 1;
+  text-align: left;
+  font-size: 16px;
+  color: #555;
+}
+
+.section-subtitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 20px;
+}
+
+.shopping-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
+
+.shopping-list-table th,
+.shopping-list-table td {
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.shopping-list-table th {
+  font-weight: bold;
+  background-color: #ff5733;
+  color: #fff;
+}
+
+.shopping-list-table td:last-child {
+  text-align: right;
+}
+
+.back-button {
+  background-color: #ff5733;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #ffae63; /* Button background color on hover */
 }

@@ -1,24 +1,20 @@
+<div class="recipe-index">
 <h2>Your Recipes</h2>
 <div class="recipes-container">
-  <ul>
+  <ul class="recipe-list">
     <% @recipes.each do |recipe| %>
-      <li>
-        <div class="recipe-left">
-          <%= link_to recipe.name, recipe_path(recipe) %>
+      <li class="recipe-item">
+          <%= link_to recipe.name, recipe_path(recipe), class: 'recipe-name' %>
+          <p class="recipe-description"><%= recipe.description %></p>    
           <% if recipe.user == current_user %>
-              <%= form_with(model: recipe, method: :delete, local: true, data: { confirm: 'Are you sure?' }) do |form| %>
-              <%= form.submit 'Delete', class: 'btn btn-danger btn-sm' %>
+            <%= form_with(model: recipe, method: :delete, local: true, data: { confirm: 'Are you sure?' }) do |form| %>
+            <%= form.submit 'Delete', class: 'btn btn-danger btn-sm' %>
             <% end %>
           <% end %>
-        </div>
-        
-        <%= link_to "Description: #{recipe.description}", recipe_path(recipe) %>
-
-
       </li>
     <% end %>
   </ul>
 </div>
 
-<%= link_to 'New Recipe', new_recipe_path %>
-
+<%= link_to 'New Recipe', new_recipe_path, class: 'btn btn-primary' %>
+</div>

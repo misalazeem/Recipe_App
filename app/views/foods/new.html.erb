@@ -1,4 +1,4 @@
-<br>
+<div class="recipe-index">
 <h1>Add New Food</h1>
 <%= form_with(model: @food, url: foods_path) do |form| %>
   <div class="field form-group">
@@ -25,3 +25,4 @@
     <%= form.submit 'Add Food', class: "btn btn-secondary"%>
   </div>
 <% end %>
+</div>

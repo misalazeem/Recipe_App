@@ -15,42 +15,42 @@
     </div>
   </div>
   <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
-  <p>Description: <%= @recipe.description %></p>
+  <p class="recipe-description">Description: <%= @recipe.description %></p>
 
   <h3>Required Food Items</h3>
   <div class="recipe-show-button-container">
-  <%= link_to 'Generate Shopping List', generate_shopping_list_recipe_path(@recipe), class: 'btn btn-primary' %>
-  <% if current_user == @recipe.user %>      
+    <%= link_to 'Generate Shopping List', generate_shopping_list_recipe_path(@recipe), class: 'btn btn-primary' %>
+    <% if current_user == @recipe.user %>      
       <%= link_to 'Add Ingredient', add_ingredient_recipe_path(@recipe), class: 'btn btn-primary' %>
     <% end %>
   </div>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Measurement Unit</th>
-      <th>Price</th>
-      <th>Action</th> <!-- Add an Action column -->
-    </tr>
-  </thead>
-  <tbody>
-    <% @recipe.foods.each do |food| %>
+  <table class="table table-bordered">
+    <thead>
       <tr>
-        <td><%= food.name %></td>
-        <td><%= food.quantity %></td>
-        <td><%= food.measurement_unit %></td>
-        <td><%= number_to_currency(food.price) %></td>
-        <td>
-          <% if current_user == @recipe.user %>
-            <%= form_tag(remove_food_recipe_path(@recipe, food_id: food.id), method: :delete) do %>
-            <%= submit_tag 'Remove Food', class: 'btn btn-danger btn-sm' %>
-            <% end %>
-          <% end %>
-        </td>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Measurement Unit</th>
+        <th>Price</th>
+        <th>Action</th> <!-- Add an Action column -->
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @recipe.foods.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.quantity %></td>
+          <td><%= food.measurement_unit %></td>
+          <td><%= number_to_currency(food.price) %></td>
+          <td>
+            <% if current_user == @recipe.user %>
+              <%= form_tag(remove_food_recipe_path(@recipe, food_id: food.id), method: :delete) do %>
+                <%= submit_tag 'Remove Food', class: 'btn btn-danger btn-sm' %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'Back to Recipes', recipes_path, class: 'btn btn-secondary' %>
 </div>
-<%= link_to 'Back to Recipes', recipes_path %>
