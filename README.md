@@ -48,6 +48,10 @@
 
 - Generate Shopping lists for recipes
 
+### Live Demo
+
+<a href="https://recipe-app-eaet.onrender.com">Click here</a>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
