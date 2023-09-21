@@ -10,6 +10,27 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag 'application', 'recipe' %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'application' %>
+    <script>
+      document.addEventListener('turbo:load', function () {
+          const menuButton = document.querySelector(".menu-button");
+          const menu = document.querySelector(".mobile-menu");
+          const closeButton = document.querySelector('.close-button');
+          function openMenu() {
+            menu.classList.add('open');
+            menuButton.style.display = 'none';
+            closeButton.style.display = 'block';
+          }
+
+          function closeMenu() {
+            menu.classList.remove('open');
+            closeButton.style.display = 'none';
+            menuButton.style.display = 'block';
+          }
+          menuButton.addEventListener('click', openMenu);
+          closeButton.addEventListener('click', closeMenu);
+        });
+    </script>
   </head>
 
   <body>

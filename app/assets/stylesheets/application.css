@@ -76,7 +76,7 @@ body {
   background-image: url('background.jpg');
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 92vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -261,4 +261,38 @@ body {
 
 .btn-secondary:hover {
   background-color: #555;
+}
+
+.mobile-menu {
+  display: none; /* Hide menu by default */
+}
+
+/* Style the menu button */
+.menu-button {
+  cursor: pointer;
+  display: none; /* Hide menu button by default */
+}
+
+@media (max-width: 768px) {
+  .menu-button {
+    display: block; /* Show menu button */
+  }
+
+  .mobile-menu.open {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(1, 0.3412, 0.2, 0.6);
+    height: 100vh;
+    padding: 20px 50px;
+  }
+
+  .navbar-menu {
+    display: none;
+  }
+  .recipe-item {
+    flex-direction: column !important;
+  }
 }
