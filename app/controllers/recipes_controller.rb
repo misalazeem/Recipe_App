@@ -43,8 +43,8 @@ class RecipesController < ApplicationController
 
   def public_recipes
     @public_recipes = Recipe.where(public: true).includes(:foods)
-    @total_food_items = Food.sum(:quantity)
-    @total_price = Food.joins(:recipe_foods).sum('foods.quantity * foods.price')
+    @total_food_items = Food.joins(:recipe_foods).where(recipe_foods: { recipe_id: @public_recipes.pluck(:id) }).sum(:quantity)
+    @total_price = Food.joins(:recipe_foods).where(recipe_foods: { recipe_id: @public_recipes.pluck(:id) }).sum('foods.quantity * foods.price')
   end
 
   def create
